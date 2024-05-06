@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+
+</head>
+<body>
+    <h2>Demo Local Store</h2>
+
+    <label for="nombre">Ingrese nombre</label>
+        <input type="text" name="tx_nombre" id="tx_nombre">
+
+    <label for="apellido">Ingrese Apellido</label>
+        <input type="text" name="tx_apellido" id="tx_apellido">
+
+<input type="button" onclick="guardar()" value="Guardar">
+<input type="button" onclick="leer()" value="Leer">
+
+<div id="datos">
+
+</div>
+
+
+</body>
+    <script>
+
+        function leer(){
+            if(typeof(Storage)!=='undefined'){
+            //    alert("Estamos ok con el Storage");  guardar datos a nivel local
+              var nombre = localStorage.getItem('nombre');     //recuperar valores 
+              var apellido = localStorage.getItem('apellido');   
+            console.log({nombre});  
+            console.log({apellido});
+            document.getElementById('datos').innerHTML="<h5>" + nombre + "</h5><h4>"+ apellido + "</h4></h5>";
+            }else{
+                    alert("morimos");
+                }
+            }
+            function guardar(){
+                if(typeof(Storage)!=='undefined'){
+             
+                  var nombre = document.getElementById('tx_nombre').value;      
+                  var apellido = document.getElementById('tx_apellido').value;
+                    localStorage.setItem('nombre', nombre);
+                    localStorage.setItem('apellido', apellido);
+                }else{
+                        alert("morimos");
+                    }
+                }
+               
+
+
+
+            leer();
+    </script>
+
+
+</html>
